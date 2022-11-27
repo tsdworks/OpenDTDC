@@ -1,0 +1,46 @@
+<openBVE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RoutePatches>
+	<Patch>
+		<Hash>F0D6AC84D94F63144F9ED5497CDF7697BDB45FF11223E2C001CF8BDA943D4E66</Hash>
+		<FileName>Jundiai-Francisco Morato.rw</FileName>
+		<LineEndingFix>true</LineEndingFix>
+	</Patch>
+	<Patch>
+		<Hash>F92E0E2DFF6DCBB71E47B0083FD33B42104C2FA544BFD0DA04BEB78094D9836E</Hash>
+		<FileName>Caldas_Grama.csv</FileName>
+		<AccurateObjectDisposal>true</AccurateObjectDisposal>
+	</Patch>
+	<Patch>
+		<Hash>A308E6413F546DBCE8BB9852444417552FFCD4BEFC10A9C5529EC8E9F8471C6A</Hash>
+		<FileName>jc_Caldas_Grama.rw</FileName>
+		<AccurateObjectDisposal>true</AccurateObjectDisposal>
+	</Patch>
+	<Patch>
+		<Hash>1BAD8567BB211FD064E0DABD329B75601C4F0CF32274B7AC8160F7D293CF746F</Hash>
+		<FileName>jc3-Jacarei_Taubate_v3.csv</FileName>
+		<Expression Number="169">.sta Sao Silvestre;16.30;16.301;0;1;0;;;10;50;</Expression>
+		<AccurateObjectDisposal>true</AccurateObjectDisposal>
+	</Patch>
+	<Patch>
+		<Hash>BF66F71130989EBA33C1D40CDD92B20F1756CFC5E104F21AD2D296D6968908CB</Hash>
+		<FileName>Pinda_Expedicionaria.rw</FileName>
+		<AccurateObjectDisposal>true</AccurateObjectDisposal>
+	</Patch>
+	<Patch>
+		<Hash>9322D87D6B32EB7789BE8856D9941EA076F834F12B6049586EF150C9B8EAC2E8</Hash>
+		<FileName>carrega.rw</FileName>
+		<ReducedColorTransparency>true</ReducedColorTransparency>
+	</Patch>
+	<Patch>
+		<Hash>4B8D49C0E2F2C4424401F059A21321B93E5C32919A26DC143FD75B3BBFE68B8F</Hash>
+		<FileName>Guaianazes_MogiCruzes.csv</FileName>
+		<!-- Fixes nastily glitched catenary at final station -->
+		<IgnorePitchRoll>true</IgnorePitchRoll>
+	</Patch>
+	<Patch>
+		<Hash>0F49FDA83D4A9EC91D258C089EFB1585D1F02C232ADD2901C518D3BE441DA2CE</Hash>
+		<FileName>Coastline.csv</FileName>
+		<AccurateObjectDisposal>true</AccurateObjectDisposal>
+	</Patch>
+  </RoutePatches>
+</openBVE>

@@ -1,0 +1,12 @@
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.Controller.dll
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.Controller.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.csproj.AssemblyReference.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.csproj.CoreCompileInputs.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.dll
+D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.pdb
+C:\Users\railw\Desktop\OpenDTDC\Host\Program\OpenDTDC.Controller.dll
+C:\Users\railw\Desktop\OpenDTDC\Host\Program\OpenDTDC.Controller.pdb
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.csproj.AssemblyReference.cache
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.csproj.CoreCompileInputs.cache
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.dll
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Controller\obj\Debug\OpenDTDC.Controller.pdb

@@ -1,0 +1,12 @@
+D:\Documents\OpenDTDC\Host\Program\OpenDTDCHost.exe.config
+D:\Documents\OpenDTDC\Host\Program\OpenDTDCHost.exe
+D:\Documents\OpenDTDC\Host\Program\OpenDTDCHost.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.csproj.AssemblyReference.cache
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.csproj.SuggestedBindingRedirects.cache
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.Properties.Resources.resources
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.FormMain.resources
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.csproj.GenerateResource.cache
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.csproj.CoreCompileInputs.cache
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.csproj.CopyComplete
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.exe
+D:\Documents\OpenDTDC\Host\OpenDTDCHost\obj\Release\OpenDTDCHost.pdb

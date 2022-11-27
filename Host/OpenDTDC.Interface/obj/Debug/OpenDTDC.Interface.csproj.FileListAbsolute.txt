@@ -1,0 +1,12 @@
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.Interface.dll
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.Interface.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.csproj.AssemblyReference.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.csproj.CoreCompileInputs.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.dll
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.pdb
+C:\Users\railw\Desktop\OpenDTDC\Host\Program\OpenDTDC.Interface.dll
+C:\Users\railw\Desktop\OpenDTDC\Host\Program\OpenDTDC.Interface.pdb
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.csproj.AssemblyReference.cache
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.csproj.CoreCompileInputs.cache
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.dll
+C:\Users\railw\Desktop\OpenDTDC\Host\OpenDTDC.Interface\obj\Debug\OpenDTDC.Interface.pdb

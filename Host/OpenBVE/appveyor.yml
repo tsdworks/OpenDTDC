@@ -1,0 +1,54 @@
+version: '1.5.3.2-{build}'
+
+image: 
+  - Visual Studio 2019
+  - Visual Studio 2017
+
+skip_commits:
+  message: /\[ci skip\]/
+  
+platform:
+  - x86
+
+init:
+  - ps: msbuild /version
+ 
+configuration:
+  - Debug
+  - Release
+
+install:
+  - ps: git submodule update --init --recursive
+
+before_build:
+  - ps: nuget restore OpenBVE.sln
+
+build:
+  project: C:\projects\OpenBVE\OpenBVE.sln
+
+after_build:
+  - ps: if ($env:CONFIGURATION -eq "Release" -and $env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2017" -and $env:APPVEYOR_REPO_TAG -eq $true) { .\WindowsInstaller.ps1 $env:APPVEYOR_REPO_TAG_NAME }
+  - ps: if ($env:CONFIGURATION -eq "Release" -and $env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2017" -and $env:APPVEYOR_REPO_TAG -eq $false) { & "C:\Program Files (x86)\Inno Setup 5\iscc.exe" /q installers\windows\openbve.iss }
+
+artifacts:
+  - path: installers\windows\Output\*.exe
+
+notifications:
+  - provider: Email
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: false
+deploy:
+#Must provide description else the GitHub API falls over
+  description: ''
+  provider: GitHub
+  auth_token:
+    secure: $env:GITHUB_DEPLOY_TOKEN
+  artifact: installers\windows\Output\*.exe
+  draft: false
+  prerelease: false
+#Need to update the existing, not overwrite as Travis is also uploading
+  force_update: true
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true

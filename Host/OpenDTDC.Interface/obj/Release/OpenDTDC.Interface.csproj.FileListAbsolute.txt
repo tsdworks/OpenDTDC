@@ -1,0 +1,6 @@
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.Interface.dll
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.Interface.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Release\OpenDTDC.Interface.csproj.AssemblyReference.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Release\OpenDTDC.Interface.csproj.CoreCompileInputs.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Release\OpenDTDC.Interface.dll
+D:\Documents\OpenDTDC\Host\OpenDTDC.Interface\obj\Release\OpenDTDC.Interface.pdb

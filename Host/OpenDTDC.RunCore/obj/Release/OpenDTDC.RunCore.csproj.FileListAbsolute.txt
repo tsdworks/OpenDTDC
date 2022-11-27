@@ -1,0 +1,9 @@
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.RunCore.dll
+D:\Documents\OpenDTDC\Host\Program\OpenDTDC.RunCore.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.csproj.AssemblyReference.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.UserInterface.FormMonitor.resources
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.csproj.GenerateResource.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.csproj.CoreCompileInputs.cache
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.csproj.CopyComplete
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.dll
+D:\Documents\OpenDTDC\Host\OpenDTDC.RunCore\obj\Release\OpenDTDC.RunCore.pdb
