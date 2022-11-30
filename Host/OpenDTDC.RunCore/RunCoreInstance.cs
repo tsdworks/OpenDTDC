@@ -76,7 +76,11 @@ namespace OpenDTDC.RunCore
                     }
                     else
                     {
-                        ScriptComponent.Update(DateTime.Now.Ticks, dataList);
+                        try
+                        {
+                            ScriptComponent.Update(DateTime.Now.Ticks, dataList);
+                        }
+                        catch (Exception) { };
                     }
                 };
 
