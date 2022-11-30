@@ -20,10 +20,10 @@ namespace OpenDTDC.RunCore
         };
 
         // 定义驾驶台实例
-        public ControllerInstance Controller = new ControllerInstance();
+        private readonly ControllerInstance Controller = new ControllerInstance();
 
         // 定义 HMI 实例
-        public HMIInstance HMI = new HMIInstance();
+        private readonly HMIInstance HMI = new HMIInstance();
 
         // 定义控制脚本实例
         public IControlScript ScriptComponent;
