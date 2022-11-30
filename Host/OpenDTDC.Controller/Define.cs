@@ -74,9 +74,9 @@ namespace OpenDTDC.Controller
 
         public class Communication
         {
-            public static int COMM_BAUDRATE = 250000;
+            public static int COMM_BAUDRATE = 115200;
 
-            public static int COMM_SEND_FREQ = 30;
+            public static int COMM_SEND_FREQ = 20;
             public static int COMM_RECV_FREQ = 200;
             public static int COMM_TIMEOUT = 250;
             public static int COMM_PACK_MIN_SIZE = 5;

@@ -47,5 +47,11 @@
     <Compile Include="ControllerInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenDTDC.Interface\OpenDTDC.Interface.csproj">
+      <Project>{7A07D40A-46E9-4D30-AEF1-2CC321BFA217}</Project>
+      <Name>OpenDTDC.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

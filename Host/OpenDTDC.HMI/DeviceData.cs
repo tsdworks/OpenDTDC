@@ -7,35 +7,35 @@ namespace OpenDTDC.HMI
     {
         private readonly object ValueUpdateLockObject = new object();
 
-        public Dictionary<Define.HALPorts.ValueEnum, object> Values;
+        public Dictionary<Define.HALPorts.IOEnum, object> Values;
 
         public DeviceData()
         {
-            Values = new Dictionary<Define.HALPorts.ValueEnum, object>();
+            Values = new Dictionary<Define.HALPorts.IOEnum, object>();
 
-            Array enumValues = Enum.GetValues(new Define.HALPorts.ValueEnum().GetType());
+            Array enumValues = Enum.GetValues(new Define.HALPorts.IOEnum().GetType());
 
             foreach (object value in enumValues)
             {
                 switch (Define.HALPorts.ValueDefineList[(int)value].Item2)
                 {
-                    case Define.HALPorts.ValueMode.DATA_MODE_BOOL:
-                    case Define.HALPorts.ValueMode.DATA_MODE_DOUBLE:
-                    case Define.HALPorts.ValueMode.DATA_MODE_INT:
+                    case Define.HALPorts.IOMode.DATA_MODE_BOOL:
+                    case Define.HALPorts.IOMode.DATA_MODE_DOUBLE:
+                    case Define.HALPorts.IOMode.DATA_MODE_INT:
                         {
-                            Values.Add((Define.HALPorts.ValueEnum)value, 0);
+                            Values.Add((Define.HALPorts.IOEnum)value, 0);
 
                             break;
                         }
-                    case Define.HALPorts.ValueMode.DATA_MODE_STRING:
+                    case Define.HALPorts.IOMode.DATA_MODE_STRING:
                         {
-                            Values.Add((Define.HALPorts.ValueEnum)value, string.Empty);
+                            Values.Add((Define.HALPorts.IOEnum)value, string.Empty);
 
                             break;
                         }
                     default:
                         {
-                            Values.Add((Define.HALPorts.ValueEnum)value, new object());
+                            Values.Add((Define.HALPorts.IOEnum)value, new object());
 
                             break;
                         }
@@ -43,10 +43,10 @@ namespace OpenDTDC.HMI
             }
 
             // 连接保持符置1
-            Values[Define.HALPorts.ValueEnum.HEART_BEAT] = 1;
+            Values[Define.HALPorts.IOEnum.HEART_BEAT] = 1;
         }
 
-        public bool Update(Define.HALPorts.ValueEnum io, object value, bool stringValue = true)
+        public bool Update(Define.HALPorts.IOEnum io, object value, bool stringValue = true)
         {
             bool retValue = false;
 
@@ -56,7 +56,7 @@ namespace OpenDTDC.HMI
                 {
                     switch (Define.HALPorts.ValueDefineList[(int)io].Item2)
                     {
-                        case Define.HALPorts.ValueMode.DATA_MODE_BOOL:
+                        case Define.HALPorts.IOMode.DATA_MODE_BOOL:
                             {
                                 int data = stringValue ? int.Parse(value.ToString()) : (int)value;
 
@@ -66,19 +66,19 @@ namespace OpenDTDC.HMI
 
                                 break;
                             }
-                        case Define.HALPorts.ValueMode.DATA_MODE_DOUBLE:
+                        case Define.HALPorts.IOMode.DATA_MODE_DOUBLE:
                             {
                                 Values[io] = stringValue ? double.Parse(value.ToString()) : (double)value;
 
                                 break;
                             }
-                        case Define.HALPorts.ValueMode.DATA_MODE_INT:
+                        case Define.HALPorts.IOMode.DATA_MODE_INT:
                             {
                                 Values[io] = stringValue ? int.Parse(value.ToString()) : (int)value;
 
                                 break;
                             }
-                        case Define.HALPorts.ValueMode.DATA_MODE_STRING:
+                        case Define.HALPorts.IOMode.DATA_MODE_STRING:
                             {
                                 Values[io] = stringValue ? (string)value : value.ToString();
 
@@ -94,9 +94,9 @@ namespace OpenDTDC.HMI
             return retValue;
         }
 
-        public Tuple<Define.HALPorts.ValueMode, object> Read(Define.HALPorts.ValueEnum io, bool lockRead = true)
+        public Tuple<Define.HALPorts.IOMode, object> Read(Define.HALPorts.IOEnum io, bool lockRead = true)
         {
-            Tuple<Define.HALPorts.ValueMode, object> retValue = new Tuple<Define.HALPorts.ValueMode, object>(Define.HALPorts.ValueMode.DATA_MODE_UNDEFINED, new object());
+            Tuple<Define.HALPorts.IOMode, object> retValue = new Tuple<Define.HALPorts.IOMode, object>(Define.HALPorts.IOMode.DATA_MODE_UNDEFINED, new object());
 
             if (lockRead)
             {
@@ -104,7 +104,7 @@ namespace OpenDTDC.HMI
                 {
                     try
                     {
-                        retValue = new Tuple<Define.HALPorts.ValueMode, object>(Define.HALPorts.ValueDefineList[(int)io].Item2, Values[io]);
+                        retValue = new Tuple<Define.HALPorts.IOMode, object>(Define.HALPorts.ValueDefineList[(int)io].Item2, Values[io]);
                     }
                     catch (Exception) { };
                 }
@@ -113,7 +113,7 @@ namespace OpenDTDC.HMI
             {
                 try
                 {
-                    retValue = new Tuple<Define.HALPorts.ValueMode, object>(Define.HALPorts.ValueDefineList[(int)io].Item2, Values[io]);
+                    retValue = new Tuple<Define.HALPorts.IOMode, object>(Define.HALPorts.ValueDefineList[(int)io].Item2, Values[io]);
                 }
                 catch (Exception) { };
             }
@@ -121,20 +121,20 @@ namespace OpenDTDC.HMI
             return retValue;
         }
 
-        public List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>> GetValueTuples()
+        public List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>> GetValueTuples()
         {
-            List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>> retValue = new List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>>();
+            List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>> retValue = new List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>>();
 
             try
             {
-                Array enumValues = Enum.GetValues(new Define.HALPorts.ValueEnum().GetType());
+                Array enumValues = Enum.GetValues(new Define.HALPorts.IOEnum().GetType());
 
                 lock (ValueUpdateLockObject)
                 {
                     foreach (object value in enumValues)
                     {
-                        Tuple<string, Tuple<Define.HALPorts.ValueMode, object>> tuple = new Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>(
-                            ((Define.HALPorts.ValueEnum)value).ToString(), Read((Define.HALPorts.ValueEnum)value, false));
+                        Tuple<string, Tuple<Define.HALPorts.IOMode, object>> tuple = new Tuple<string, Tuple<Define.HALPorts.IOMode, object>>(
+                            ((Define.HALPorts.IOEnum)value).ToString(), Read((Define.HALPorts.IOEnum)value, false));
 
                         retValue.Add(tuple);
                     }

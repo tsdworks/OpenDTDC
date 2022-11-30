@@ -17,7 +17,7 @@
 #define FIRMWARE_VERSION 0x01
 
 // 串口波特率
-#define BAUDRATE 250000l
+#define BAUDRATE 115200l
 
 // 控制器数量
 #define CTR_NUM 35

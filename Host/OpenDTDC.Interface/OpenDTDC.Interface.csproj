@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IControlScript.cs" />
+    <Compile Include="IHardware.cs" />
     <Compile Include="IRunCore.cs" />
     <Compile Include="ITrainManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

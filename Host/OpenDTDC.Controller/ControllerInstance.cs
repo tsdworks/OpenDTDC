@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenDTDC.Interface;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenDTDC.Controller
 {
-    public class ControllerInstance
+    public class ControllerInstance : IHardware<Define.HALPorts.IOMode, Define.HALPorts.IOEnum, int>
     {
         private byte Model;
         private byte Version;
@@ -42,7 +43,7 @@ namespace OpenDTDC.Controller
         public event DeviceReceivedDataUpdatedHandler DeviceReceivedDataUpdated;
         // public event DeviceSendDataUpdatedHandler DeviceSendDataUpdated;
 
-        public bool Connect(string serialPortName = "")
+        public bool Connect(string connectionString = "")
         {
             bool retValue = false;
 
@@ -60,7 +61,7 @@ namespace OpenDTDC.Controller
                 if (!SerialPort.IsOpen)
                 {
                     // 自动连接
-                    if (serialPortName == string.Empty)
+                    if (connectionString == string.Empty)
                     {
                         foreach (string serialPort in SerialPort.GetPortNames())
                         {
@@ -94,7 +95,7 @@ namespace OpenDTDC.Controller
                                 {
                                     SerialPort.Write(Define.Communication.COMM_START_TRANS_REQUEST);
 
-                                    serialPortName = serialPort;
+                                    connectionString = serialPort;
 
                                     break;
                                 }
@@ -106,7 +107,7 @@ namespace OpenDTDC.Controller
                     else
                     {
                         SerialPort.BaudRate = Define.Communication.COMM_BAUDRATE;
-                        SerialPort.PortName = serialPortName;
+                        SerialPort.PortName = connectionString;
                         SerialPort.ReadTimeout = Define.Communication.COMM_TIMEOUT;
                         SerialPort.WriteTimeout = Define.Communication.COMM_TIMEOUT;
 
@@ -133,7 +134,7 @@ namespace OpenDTDC.Controller
                         }
                     }
 
-                    if (SerialPort.IsOpen && serialPortName != string.Empty)
+                    if (SerialPort.IsOpen && connectionString != string.Empty)
                     {
                         DeviceData = new DeviceData();
 
@@ -162,7 +163,7 @@ namespace OpenDTDC.Controller
                         SendHandler.Start();
 
                         // 消息回调
-                        _ = (DeviceConnected?.BeginInvoke(serialPortName, null, null));
+                        _ = (DeviceConnected?.BeginInvoke(connectionString, null, null));
 
                         retValue = true;
                     }
@@ -326,21 +327,23 @@ namespace OpenDTDC.Controller
             return retValue;
         }
 
-        public bool SetValue(Define.HALPorts.IOEnum io, int value)
+        public bool SetValue(Define.HALPorts.IOEnum io, object value, bool stringValue = false)
         {
             bool retValue = false;
 
             if (IsConnected())
             {
-                value = value > 100 ? 100 : (value < 0 ? 0 : value);
+                int intValue = (int)value;
 
-                retValue = DeviceData.Update(io, value);
+                intValue = intValue > 100 ? 100 : (intValue < 0 ? 0 : intValue);
+
+                retValue = DeviceData.Update(io, intValue);
             }
 
             return retValue;
         }
 
-        public bool SetValue(string ioName, int value)
+        public bool SetValue(string ioName, object value, bool stringValue = false)
         {
             bool retValue = false;
 

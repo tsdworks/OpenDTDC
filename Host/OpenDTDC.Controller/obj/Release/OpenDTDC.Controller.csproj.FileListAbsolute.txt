@@ -4,3 +4,4 @@ D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Release\OpenDTDC.Controller.c
 D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Release\OpenDTDC.Controller.csproj.CoreCompileInputs.cache
 D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Release\OpenDTDC.Controller.dll
 D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Release\OpenDTDC.Controller.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDC.Controller\obj\Release\OpenDTDC.Controller.csproj.CopyComplete

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenDTDC.Interface;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OpenDTDC.HMI
 {
-    public class HMIInstance
+    public class HMIInstance : IHardware<Define.HALPorts.IOMode, Define.HALPorts.IOEnum, Tuple<Define.HALPorts.IOMode, object>>
     {
         private byte Model;
         private byte Version;
@@ -39,12 +40,12 @@ namespace OpenDTDC.HMI
 
         // 数据事件
         // public delegate void DeviceReceivedDataUpdatedHandler(List<Tuple<string, int>> dataList);
-        public delegate void DeviceSendDataUpdatedHandler(List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>> dataList);
+        public delegate void DeviceSendDataUpdatedHandler(List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>> dataList);
 
         // public event DeviceReceivedDataUpdatedHandler DeviceReceivedDataUpdated;
         public event DeviceSendDataUpdatedHandler DeviceSendDataUpdated;
 
-        public bool Connect(string serialPortName = "")
+        public bool Connect(string connectionString = "")
         {
             bool retValue = false;
 
@@ -62,7 +63,7 @@ namespace OpenDTDC.HMI
                 if (!SerialPort.IsOpen)
                 {
                     // 自动连接
-                    if (serialPortName == string.Empty)
+                    if (connectionString == string.Empty)
                     {
                         foreach (string serialPort in SerialPort.GetPortNames())
                         {
@@ -98,7 +99,7 @@ namespace OpenDTDC.HMI
                                     SerialPort.Write(Define.Communication.COMM_START_TRANS_REQUEST);
                                     SerialPort.Write(Define.Communication.COMM_TAIL, 0, Define.Communication.COMM_TAIL.Length);
 
-                                    serialPortName = serialPort;
+                                    connectionString = serialPort;
 
                                     break;
                                 }
@@ -110,7 +111,7 @@ namespace OpenDTDC.HMI
                     else
                     {
                         SerialPort.BaudRate = Define.Communication.COMM_BAUDRATE;
-                        SerialPort.PortName = serialPortName;
+                        SerialPort.PortName = connectionString;
                         SerialPort.ReadTimeout = Define.Communication.COMM_TIMEOUT;
                         SerialPort.WriteTimeout = Define.Communication.COMM_TIMEOUT;
 
@@ -139,7 +140,7 @@ namespace OpenDTDC.HMI
                         }
                     }
 
-                    if (SerialPort.IsOpen && serialPortName != string.Empty)
+                    if (SerialPort.IsOpen && connectionString != string.Empty)
                     {
                         DeviceData = new DeviceData();
 
@@ -168,7 +169,7 @@ namespace OpenDTDC.HMI
                         SendHandler.Start();
 
                         // 消息回调
-                        _ = (DeviceConnected?.BeginInvoke(serialPortName, null, null));
+                        _ = (DeviceConnected?.BeginInvoke(connectionString, null, null));
 
                         retValue = true;
                     }
@@ -260,7 +261,7 @@ namespace OpenDTDC.HMI
             return retValue;
         }
 
-        public List<string> GetValueNames()
+        public List<string> GetIONames()
         {
             List<string> retValue = new List<string>();
 
@@ -268,14 +269,14 @@ namespace OpenDTDC.HMI
             {
                 for (int i = 0; i < Define.HALPorts.ValueDefineList.Count; i++)
                 {
-                    retValue.Add(((Define.HALPorts.ValueEnum)i).ToString());
+                    retValue.Add(((Define.HALPorts.IOEnum)i).ToString());
                 }
             }
 
             return retValue;
         }
 
-        public List<string> GetValueNames(Define.HALPorts.ValueMode typeFilter)
+        public List<string> GetIONames(Define.HALPorts.IOMode typeFilter)
         {
             List<string> retValue = new List<string>();
 
@@ -285,7 +286,7 @@ namespace OpenDTDC.HMI
                 {
                     if (Define.HALPorts.ValueDefineList[i].Item2 == typeFilter)
                     {
-                        retValue.Add(((Define.HALPorts.ValueMode)i).ToString());
+                        retValue.Add(((Define.HALPorts.IOMode)i).ToString());
                     }
                 }
             }
@@ -293,9 +294,9 @@ namespace OpenDTDC.HMI
             return retValue;
         }
 
-        public List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>> GetValueTuples()
+        public List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>> GetValueTuples()
         {
-            List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>> retValue = new List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>>();
+            List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>> retValue = new List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>>();
 
             if (IsConnected())
             {
@@ -305,9 +306,9 @@ namespace OpenDTDC.HMI
             return retValue;
         }
 
-        public Tuple<Define.HALPorts.ValueMode, object> GetValue(Define.HALPorts.ValueEnum io)
+        public Tuple<Define.HALPorts.IOMode, object> GetValue(Define.HALPorts.IOEnum io)
         {
-            Tuple<Define.HALPorts.ValueMode, object> retValue = new Tuple<Define.HALPorts.ValueMode, object>(Define.HALPorts.ValueMode.DATA_MODE_UNDEFINED, new object());
+            Tuple<Define.HALPorts.IOMode, object> retValue = new Tuple<Define.HALPorts.IOMode, object>(Define.HALPorts.IOMode.DATA_MODE_UNDEFINED, new object());
 
             if (IsConnected())
             {
@@ -317,21 +318,21 @@ namespace OpenDTDC.HMI
             return retValue;
         }
 
-        public Tuple<Define.HALPorts.ValueMode, object> GetValue(string ioName)
+        public Tuple<Define.HALPorts.IOMode, object> GetValue(string ioName)
         {
-            Tuple<Define.HALPorts.ValueMode, object> retValue = new Tuple<Define.HALPorts.ValueMode, object>(Define.HALPorts.ValueMode.DATA_MODE_UNDEFINED, new object());
+            Tuple<Define.HALPorts.IOMode, object> retValue = new Tuple<Define.HALPorts.IOMode, object>(Define.HALPorts.IOMode.DATA_MODE_UNDEFINED, new object());
 
             try
             {
                 retValue = GetValue(
-                    (Define.HALPorts.ValueEnum)Enum.Parse(typeof(Define.HALPorts.ValueEnum), ioName));
+                    (Define.HALPorts.IOEnum)Enum.Parse(typeof(Define.HALPorts.IOEnum), ioName));
             }
             catch (Exception) { };
 
             return retValue;
         }
 
-        public bool SetValue(Define.HALPorts.ValueEnum io, object value, bool stringValue = true)
+        public bool SetValue(Define.HALPorts.IOEnum io, object value, bool stringValue = true)
         {
             bool retValue = false;
 
@@ -350,7 +351,7 @@ namespace OpenDTDC.HMI
             try
             {
                 retValue = SetValue(
-                    (Define.HALPorts.ValueEnum)Enum.Parse(typeof(Define.HALPorts.ValueEnum), ioName), value, stringValue);
+                    (Define.HALPorts.IOEnum)Enum.Parse(typeof(Define.HALPorts.IOEnum), ioName), value, stringValue);
             }
             catch (Exception) { };
 
@@ -422,7 +423,7 @@ namespace OpenDTDC.HMI
 
                 try
                 {
-                    List<Tuple<string, Tuple<Define.HALPorts.ValueMode, object>>> dataList = DeviceData.GetValueTuples();
+                    List<Tuple<string, Tuple<Define.HALPorts.IOMode, object>>> dataList = DeviceData.GetValueTuples();
 
                     for (int i = 0; i < dataList.Count; i++)
                     {
@@ -432,7 +433,7 @@ namespace OpenDTDC.HMI
                         // 数据部分
                         switch (dataList[i].Item2.Item1)
                         {
-                            case Define.HALPorts.ValueMode.DATA_MODE_STRING:
+                            case Define.HALPorts.IOMode.DATA_MODE_STRING:
                                 {
                                     _ = commandToSend.Append('\"');
                                     _ = commandToSend.Append((string)dataList[i].Item2.Item2);

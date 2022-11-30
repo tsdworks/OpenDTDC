@@ -11,7 +11,7 @@ typedef uint8_t COMM_PACKSIZE;
 typedef uint8_t COMM_INDEX;
 
 // 数据收发时间相关
-#define COMM_SEND_FREQ 40
+#define COMM_SEND_FREQ 20
 #define COMM_RECV_TIMEOUT 500
 #define COMM_ON_CHANGE_BEEP_DURATION 100
 

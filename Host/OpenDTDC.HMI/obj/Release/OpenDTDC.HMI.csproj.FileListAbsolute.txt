@@ -4,3 +4,4 @@ D:\Documents\OpenDTDC\Host\OpenDTDC.HMI\obj\Release\OpenDTDC.HMI.csproj.Assembly
 D:\Documents\OpenDTDC\Host\OpenDTDC.HMI\obj\Release\OpenDTDC.HMI.csproj.CoreCompileInputs.cache
 D:\Documents\OpenDTDC\Host\OpenDTDC.HMI\obj\Release\OpenDTDC.HMI.dll
 D:\Documents\OpenDTDC\Host\OpenDTDC.HMI\obj\Release\OpenDTDC.HMI.pdb
+D:\Documents\OpenDTDC\Host\OpenDTDC.HMI\obj\Release\OpenDTDC.HMI.csproj.CopyComplete

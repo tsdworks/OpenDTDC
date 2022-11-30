@@ -13,7 +13,7 @@ namespace OpenDTDC.HMI
 
         public class HALPorts
         {
-            public enum ValueMode
+            public enum IOMode
             {
                 DATA_MODE_DOUBLE = 0,
                 DATA_MODE_INT = 1,
@@ -22,7 +22,7 @@ namespace OpenDTDC.HMI
                 DATA_MODE_UNDEFINED = 4
             };
 
-            public enum ValueEnum
+            public enum IOEnum
             {
                 REVERSER = 0,
                 THROTTLE = 1,
@@ -42,29 +42,29 @@ namespace OpenDTDC.HMI
                 HEART_BEAT = 15
             };
 
-            private static Tuple<string, ValueMode> MakeTuple(string prefix, ValueMode valueMode)
+            private static Tuple<string, IOMode> MakeTuple(string prefix, IOMode valueMode)
             {
-                return new Tuple<string, ValueMode>(prefix, valueMode);
+                return new Tuple<string, IOMode>(prefix, valueMode);
             }
 
-            public static List<Tuple<string, ValueMode>> ValueDefineList = new List<Tuple<string, ValueMode>>()
+            public static List<Tuple<string, IOMode>> ValueDefineList = new List<Tuple<string, IOMode>>()
             {
-                MakeTuple("Rev.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Thr.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Brk.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Spd.txt=", ValueMode.DATA_MODE_STRING),
-                MakeTuple("SpdLim.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Time.txt=", ValueMode.DATA_MODE_STRING),
-                MakeTuple("Panto.val=", ValueMode.DATA_MODE_BOOL),
-                MakeTuple("Vol.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Amm.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("No.txt=", ValueMode.DATA_MODE_STRING),
-                MakeTuple("SigCode.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("OvrSpd.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Horn.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Sander.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("Headlight.val=", ValueMode.DATA_MODE_INT),
-                MakeTuple("conStart=", ValueMode.DATA_MODE_INT)
+                MakeTuple("Rev.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Thr.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Brk.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Spd.txt=", IOMode.DATA_MODE_STRING),
+                MakeTuple("SpdLim.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Time.txt=", IOMode.DATA_MODE_STRING),
+                MakeTuple("Panto.val=", IOMode.DATA_MODE_BOOL),
+                MakeTuple("Vol.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Amm.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("No.txt=", IOMode.DATA_MODE_STRING),
+                MakeTuple("SigCode.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("OvrSpd.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Horn.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Sander.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Headlight.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("conStart=", IOMode.DATA_MODE_INT)
             };
         };
 

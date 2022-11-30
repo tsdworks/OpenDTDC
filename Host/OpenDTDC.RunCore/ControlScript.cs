@@ -134,49 +134,49 @@ namespace OpenDTDC.RunCore
 
                 // 进行数据输出
                 // 换向器
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.REVERSER, TrainManager.GetReverserState(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.REVERSER, TrainManager.GetReverserState(), false);
 
                 // 功率手柄
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.THROTTLE, TrainManager.GetPowerHandle(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.THROTTLE, TrainManager.GetPowerHandle(), false);
 
                 // 制动手柄
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.BRAKE, TrainManager.GetTrainBrakeHandle(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.BRAKE, TrainManager.GetTrainBrakeHandle(), false);
 
                 // 当前速度
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.SPEED, Math.Abs(TrainManager.GetSpeed() * 3.6).ToString("f1"), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.SPEED, Math.Abs(TrainManager.GetSpeed() * 3.6).ToString("f1"), false);
 
                 // 当前限速
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.SPEED_LIMIT, (int)Math.Abs(TrainManager.GetSectionSpeedLimit() * 3.6), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.SPEED_LIMIT, (int)Math.Abs(TrainManager.GetSectionSpeedLimit() * 3.6), false);
 
                 // 当前时间
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.TIME, TrainManager.GetTime(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.TIME, TrainManager.GetTime(), false);
 
                 // 当前受电弓
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.PANTO, TrainManager.GetPantoState(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.PANTO, TrainManager.GetPantoState(), false);
 
                 // 当前电压
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.VOLTAGE, (int)TrainManager.GetVoltage(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.VOLTAGE, (int)TrainManager.GetVoltage(), false);
 
                 // 当前电流
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.CURRENT, (int)TrainManager.GetCurrent(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.CURRENT, (int)TrainManager.GetCurrent(), false);
 
                 // 当前车号
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.LOCO_NO, TrainManager.GetTrainName(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.LOCO_NO, TrainManager.GetTrainName(), false);
 
                 // 当前信号
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.SIGCODE, TrainManager.GetNextSectionSignal(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.SIGCODE, TrainManager.GetNextSectionSignal(), false);
 
                 // 是否超速
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.OVERSPEED, Math.Abs(TrainManager.GetSpeed()) > Math.Abs(TrainManager.GetSectionSpeedLimit()) ? 1 : 0, false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.OVERSPEED, Math.Abs(TrainManager.GetSpeed()) > Math.Abs(TrainManager.GetSectionSpeedLimit()) ? 1 : 0, false);
 
                 // 风笛状态
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.HORN, TrainManager.GetHornState(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.HORN, TrainManager.GetHornState(), false);
 
                 // 撒沙状态
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.SANDER, TrainManager.GetSanderState(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.SANDER, TrainManager.GetSanderState(), false);
 
                 // 头灯状态
-                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.ValueEnum.HEADLIGHT, TrainManager.GetHeadlightState(), false);
+                _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.HEADLIGHT, TrainManager.GetHeadlightState(), false);
 
                 // 信号机
                 switch (TrainManager.GetNextSectionSignal())

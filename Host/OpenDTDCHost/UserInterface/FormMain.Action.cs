@@ -66,7 +66,7 @@ namespace OpenDTDCHost
 
                     comboBoxHMIDeviceIO.Items.Clear();
 
-                    comboBoxHMIDeviceIO.Items.AddRange(HMI.GetValueNames().ToArray());
+                    comboBoxHMIDeviceIO.Items.AddRange(HMI.GetIONames().ToArray());
                 }));
             };
 
@@ -183,13 +183,13 @@ namespace OpenDTDCHost
             return HMI.SetValue(ioName, value);
         }
 
-        private void ActionHMIUpdateListView(List<Tuple<string, Tuple<OpenDTDC.HMI.Define.HALPorts.ValueMode, object>>> dataList)
+        private void ActionHMIUpdateListView(List<Tuple<string, Tuple<OpenDTDC.HMI.Define.HALPorts.IOMode, object>>> dataList)
         {
             try
             {
                 if (HMI.IsConnected())
                 {
-                    foreach (Tuple<string, Tuple<OpenDTDC.HMI.Define.HALPorts.ValueMode, object>> value in dataList)
+                    foreach (Tuple<string, Tuple<OpenDTDC.HMI.Define.HALPorts.IOMode, object>> value in dataList)
                     {
                         int index = -1;
 
