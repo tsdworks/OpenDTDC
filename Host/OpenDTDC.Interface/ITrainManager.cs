@@ -36,8 +36,11 @@
         // 设置受电弓
         void SetPantoState(int dataValue);
 
-        // 设置车门
-        void SetDoorState(int dataValue);
+        // 设置左车门
+        void SetLeftDoorState(int dataValue);
+
+        // 设置右车门
+        void SetRightDoorState(int dataValue);
         #endregion
 
         #region Getters
@@ -74,8 +77,11 @@
         // 获取受电弓状态
         int GetPantoState();
 
-        // 获取车门状态
-        int GetDoorState();
+        // 获取左车门状态
+        int GetLeftDoorState();
+
+        // 获取右车门状态
+        int GetRightDoorState();
 
         // 获取速度
         double GetSpeed();

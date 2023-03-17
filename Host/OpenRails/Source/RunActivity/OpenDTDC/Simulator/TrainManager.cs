@@ -167,14 +167,25 @@ namespace OpenDTDC.Simulator
             catch (Exception) { };
         }
 
-        public void SetDoorState(int dataValue)
+        public void SetLeftDoorState(int dataValue)
         {
             try
             {
-                if (GetDoorState() != dataValue)
+                if (GetLeftDoorState() != dataValue)
                 {
                     ((MSTSLocomotive)PlayerLocomotive).ToggleDoorsLeft();
-                    //((MSTSLocomotive)PlayerLocomotive).ToggleDoorsRight();
+                }
+            }
+            catch (Exception) { };
+        }
+
+        public void SetRightDoorState(int dataValue)
+        {
+            try
+            {
+                if (GetRightDoorState() != dataValue)
+                {
+                    ((MSTSLocomotive)PlayerLocomotive).ToggleDoorsRight();
                 }
             }
             catch (Exception) { };
@@ -373,7 +384,7 @@ namespace OpenDTDC.Simulator
             return retValue;
         }
 
-        public int GetDoorState()
+        public int GetLeftDoorState()
         {
             int retValue = 0;
 
@@ -392,8 +403,19 @@ namespace OpenDTDC.Simulator
                 };
 
                 retValue |= (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
+            }
+            catch (Exception) { };
 
-                virtualControl = new CabViewControl
+            return retValue;
+        }
+
+        public int GetRightDoorState()
+        {
+            int retValue = 0;
+
+            try
+            {
+                CabViewControl virtualControl = new CabViewControl
                 {
                     ControlType = CABViewControlTypes.RIGHTDOOR
                 };
