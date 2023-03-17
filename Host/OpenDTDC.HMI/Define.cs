@@ -39,7 +39,8 @@ namespace OpenDTDC.HMI
                 HORN = 12,
                 SANDER = 13,
                 HEADLIGHT = 14,
-                HEART_BEAT = 15
+                DOOR = 15,
+                HEART_BEAT = 16
             };
 
             private static Tuple<string, IOMode> MakeTuple(string prefix, IOMode valueMode)
@@ -64,6 +65,7 @@ namespace OpenDTDC.HMI
                 MakeTuple("Horn.val=", IOMode.DATA_MODE_INT),
                 MakeTuple("Sander.val=", IOMode.DATA_MODE_INT),
                 MakeTuple("Headlight.val=", IOMode.DATA_MODE_INT),
+                MakeTuple("Door.val=", IOMode.DATA_MODE_INT),
                 MakeTuple("conStart=", IOMode.DATA_MODE_INT)
             };
         };

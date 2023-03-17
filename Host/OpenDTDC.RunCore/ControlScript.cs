@@ -53,10 +53,11 @@ namespace OpenDTDC.RunCore
                             TrainManager.SetHeadlightState(data.Item2);
                             break;
                         }
-                    // 预留
+                    // 车门
                     case OpenDTDC.Controller.Define.HALPorts.IOEnum.SDS9:
                         {
-                            // 预留
+                            // 车门
+                            TrainManager.SetDoorState(data.Item2);
                             break;
                         }
                     // 汽笛
@@ -175,6 +176,9 @@ namespace OpenDTDC.RunCore
 
             // 头灯状态
             _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.HEADLIGHT, TrainManager.GetHeadlightState(), false);
+
+            // 车门状态
+            _ = HMI.SetValue(OpenDTDC.HMI.Define.HALPorts.IOEnum.DOOR, TrainManager.GetDoorState(), false);
 
             // 信号机
             switch (TrainManager.GetNextSectionSignal())

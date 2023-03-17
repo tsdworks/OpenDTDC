@@ -166,6 +166,19 @@ namespace OpenDTDC.Simulator
             }
             catch (Exception) { };
         }
+
+        public void SetDoorState(int dataValue)
+        {
+            try
+            {
+                if (GetDoorState() != dataValue)
+                {
+                    ((MSTSLocomotive)PlayerLocomotive).SignalEvent(
+                        dataValue > 0 ? Orts.Common.Event.DoorOpen : Orts.Common.Event.DoorClose);
+                }
+            }
+            catch (Exception) { };
+        }
         #endregion
 
         #region Getters
@@ -349,6 +362,26 @@ namespace OpenDTDC.Simulator
                 CabViewControl virtualControl = new CabViewControl
                 {
                     ControlType = CABViewControlTypes.SANDING
+                };
+
+                retValue = (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
+
+                retValue = retValue > 1 ? 1 : (retValue < 0 ? 0 : retValue);
+            }
+            catch (Exception) { };
+
+            return retValue;
+        }
+
+        public int GetDoorState()
+        {
+            int retValue = 0;
+
+            try
+            {
+                CabViewControl virtualControl = new CabViewControl
+                {
+                    ControlType = CABViewControlTypes.DOORS_DISPLAY
                 };
 
                 retValue = (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);

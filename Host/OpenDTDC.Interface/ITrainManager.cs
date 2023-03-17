@@ -35,41 +35,47 @@
 
         // 设置受电弓
         void SetPantoState(int dataValue);
+
+        // 设置车门
+        void SetDoorState(int dataValue);
         #endregion
 
         #region Getters
-        // 获取功率手柄
+        // 获取功率手柄状态
         int GetPowerHandle();
 
-        // 获取列车制动
+        // 获取列车制动状态
         int GetTrainBrakeHandle();
 
-        // 获取再生（电阻）制动
+        // 获取再生（电阻）制动状态
         int GetDynamicBrakeHandle();
 
-        // 获取机车制动
+        // 获取机车制动状态
         int GetEngineBrakeHandle();
 
-        // 获取手制动
+        // 获取手制动状态
         int GetHandBrakeState();
 
-        // 获取紧急制动
+        // 获取紧急制动状态
         int GetEmergencyState();
 
-        // 获取换向器
+        // 获取换向器状态
         int GetReverserState();
 
-        // 获取汽笛
+        // 获取汽笛状态
         int GetHornState();
 
-        // 获取头灯
+        // 获取头灯状态
         int GetHeadlightState();
 
-        // 获取撒沙
+        // 获取撒沙状态
         int GetSanderState();
 
-        // 获取受电弓
+        // 获取受电弓状态
         int GetPantoState();
+
+        // 获取车门状态
+        int GetDoorState();
 
         // 获取速度
         double GetSpeed();
