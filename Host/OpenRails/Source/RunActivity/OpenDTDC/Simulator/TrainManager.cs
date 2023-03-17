@@ -171,10 +171,10 @@ namespace OpenDTDC.Simulator
         {
             try
             {
-                //if (GetDoorState() != dataValue)
+                if (GetDoorState() != dataValue)
                 {
-                    ((MSTSLocomotive)PlayerLocomotive).SignalEvent(
-                        dataValue > 0 ? Orts.Common.Event.DoorOpen : Orts.Common.Event.DoorClose);
+                    ((MSTSLocomotive)PlayerLocomotive).ToggleDoorsLeft();
+                    //((MSTSLocomotive)PlayerLocomotive).ToggleDoorsRight();
                 }
             }
             catch (Exception) { };
