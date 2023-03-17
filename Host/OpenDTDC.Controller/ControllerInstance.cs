@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OpenDTDC.Controller
 {
@@ -333,7 +334,7 @@ namespace OpenDTDC.Controller
 
             if (IsConnected())
             {
-                int intValue = (int)value;
+                int intValue = int.Parse(value.ToString());
 
                 intValue = intValue > 100 ? 100 : (intValue < 0 ? 0 : intValue);
 
@@ -461,7 +462,7 @@ namespace OpenDTDC.Controller
                         }
                     }
                 }
-                catch (Exception) { };
+                catch (Exception){ };
 
                 lock (TaskSigintLockObject)
                 {

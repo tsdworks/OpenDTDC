@@ -57,6 +57,7 @@ namespace OpenDTDC.RunCore
                     case OpenDTDC.Controller.Define.HALPorts.IOEnum.SDS9:
                         {
                             // 车门
+                            TrainManager.SetSanderState(data.Item2);
                             TrainManager.SetDoorState(data.Item2);
                             break;
                         }

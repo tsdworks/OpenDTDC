@@ -171,7 +171,7 @@ namespace OpenDTDC.Simulator
         {
             try
             {
-                if (GetDoorState() != dataValue)
+                //if (GetDoorState() != dataValue)
                 {
                     ((MSTSLocomotive)PlayerLocomotive).SignalEvent(
                         dataValue > 0 ? Orts.Common.Event.DoorOpen : Orts.Common.Event.DoorClose);
@@ -381,10 +381,33 @@ namespace OpenDTDC.Simulator
             {
                 CabViewControl virtualControl = new CabViewControl
                 {
-                    ControlType = CABViewControlTypes.DOORS_DISPLAY
+                    ControlType = CABViewControlTypes.LEFTDOOR
                 };
 
-                retValue = (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
+                retValue |= (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
+
+                virtualControl = new CabViewControl
+                {
+                    ControlType = CABViewControlTypes.ORTS_LEFTDOOR
+                };
+
+                retValue |= (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
+
+                virtualControl = new CabViewControl
+                {
+                    ControlType = CABViewControlTypes.RIGHTDOOR
+                };
+
+                retValue |= (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
+
+                retValue = retValue > 1 ? 1 : (retValue < 0 ? 0 : retValue);
+
+                virtualControl = new CabViewControl
+                {
+                    ControlType = CABViewControlTypes.ORTS_RIGHTDOOR
+                };
+
+                retValue |= (int)((MSTSLocomotive)PlayerLocomotive).GetDataOf(virtualControl);
 
                 retValue = retValue > 1 ? 1 : (retValue < 0 ? 0 : retValue);
             }
